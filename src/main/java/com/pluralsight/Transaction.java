@@ -32,24 +32,26 @@ public class Transaction {
     }
 
     //Getter - returns the value of a private field
-    //Setter - updates the amount stored in the object
+    //Setter - updates the value of private field
 
 
     /* Understand getter
-    public: other classes can use this method
-    String: The method returns text
-    getName: The method's name
-    return name;: Sends back the employee's name
+    public:       other classes can use this method
+    String:       The method returns a date
+    getDate:      The method's name
+    return date;  returns back the Transaction's date
      */
     public LocalDate getDate() {
         return date;
     }
 
     /* understand setter
-    public: other classes can use this method
-    void: the method doesn't return a value
-    setName(): receives the new name
-    this.name = name; saves the new name to the employee object
+    public:     other classes can use this method
+    void:       the method doesn't return a value
+    setDate():  receives the new date
+    this.date   saves the date inside the Transaction object
+    date        new date being passed into the method
+    =           assigns the new date to the objects field
      */
     public void setDate(LocalDate date) {
         this.date = date;
