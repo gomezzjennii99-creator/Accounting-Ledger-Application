@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -110,8 +112,27 @@ public class Ledger {
         }
 
 
+    }
+    //Save a new transaction to the CSV file - new method
+    public static void saveTransaction(Transaction transaction) throws IOException {
 
+        //open the CSV file so I can add a new transaction without deleting the previous ones
+        BufferedWriter writer = new  BufferedWriter(new FileWriter("src/main/java/com/pluralsight/transactions.csv", true));
+         /*
+         BufferedWriter   - helps write information into the file
+         writer           - variable name
+         new FileWriter() - opens csv file for writing
+         true             - tells program to add new info at the end instead of replacing what's already there
+          */
+        //write the transaction info into the CSV file
+        writer.write( transaction.getDate() + "|" + transaction.getTime() + "|" + transaction.getDescription() + "|" +
+                transaction.getVendor() + "|" +  transaction.getAmount());
 
+        // move to the next line so each transaction has its own line
+        writer.newLine();
+
+        //Close the writer to make sure the transaction is saved
+        writer.close();
 
     }
 

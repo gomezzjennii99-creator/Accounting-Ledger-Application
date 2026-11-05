@@ -2,6 +2,8 @@ package com.pluralsight;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.time.LocalTime;
+import java.time.LocalDate;
 
 /* HomeScreen Should give the user the following options:
             App should continue to run until user chooses to exit
@@ -53,8 +55,36 @@ public class HomeScreen {
             //made while loop option case-insensitive
             if (choice.equalsIgnoreCase("D")) {
                 System.out.println("ADD DEPOSIT SELECTED");
+                //ask the user what the deposit is for
+                System.out.print("Enter deposit description: ");
+                String description = scanner.nextLine();
+                //ask where the money is coming from
+                System.out.print("Enter vendor: ");
+                String vendor = scanner.nextLine();
+                //ask how much money is being deposited
+                System.out.print("Enter deposit amount: ");
+                //math.abs() makes a negative number positive
+                double amount = Math.abs(Double.parseDouble(scanner.nextLine()));
+                //automatically get the date and time of the deposit
+                LocalDate date = LocalDate.now();
+                LocalTime time = LocalTime.now().withSecond(0).withNano(0);
+                //Create a transaction object for the deposit
+                Transaction deposit = new Transaction(date, time, description,vendor, amount);
+                //add the new deposit to the list of transactions
+                Ledger.transactions.add(deposit);
+                //save the deposit to the CSV file so it is still there when i reopen the program
+                Ledger.saveTransaction(deposit);
+
+                //Confirm to user Deposit made Successfully
+                System.out.println("Deposit information entered successfully :)!");
+
+
+
+
             } else if (choice.equalsIgnoreCase("P")) {
                 System.out.println("MAKE PAYMENT SELECTED");
+
+
             } else if (choice.equalsIgnoreCase("L")) {
                 System.out.println("VIEW LEDGER AND REPORTS SELECTED");
                 //Show how many transactions were loaded from the csv
@@ -68,7 +98,6 @@ public class HomeScreen {
                             transaction.getDescription(), transaction.getVendor(), transaction.getAmount());
                     ;
                 }
-
 
             } else if (choice.equalsIgnoreCase("X")) {
                 System.out.println("Thank you for using JG Financial! ");
