@@ -5,6 +5,11 @@ they are part of Java's Package */
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/*Transaction - describes what one transaction looks like
+transactions - hold all the transaction record
+Ledger - helps manage the transactions
+ */
+
 public class Transaction {
 
     //add fields

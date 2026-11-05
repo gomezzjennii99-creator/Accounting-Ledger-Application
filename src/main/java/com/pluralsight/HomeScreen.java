@@ -1,10 +1,9 @@
 package com.pluralsight;
 
+import java.io.IOException;
 import java.util.Scanner;
 
-public class HomeScreen {
-    public static void main(String[] args) {
-        /* HomeScreen Should give the user the following options:
+/* HomeScreen Should give the user the following options:
             App should continue to run until user chooses to exit
 
             - D) Add Deposit - Prompt user for the deposit information
@@ -14,7 +13,11 @@ public class HomeScreen {
             ▪ L) Ledger - display the ledger screen
             ▪ X) Exit - exit the application
        */
+public class HomeScreen {
 
+    public static void main(String[] args) throws IOException {
+        // Load saved transactions from the CSV before showing the menu
+        Ledger.loadTransactions();
 
         //Create a scanner that is able to read user input
         Scanner scanner = new Scanner(System.in);
@@ -36,7 +39,7 @@ public class HomeScreen {
                         [X]     EXIT
                     
                     ------------------------------------------------------
-                    Select an option:\s""");
+                    Select an option:""");
 
 
          /* I used a while loop because I want the app/menu to continue running
@@ -54,6 +57,19 @@ public class HomeScreen {
                 System.out.println("MAKE PAYMENT SELECTED");
             } else if (choice.equalsIgnoreCase("L")) {
                 System.out.println("VIEW LEDGER AND REPORTS SELECTED");
+                //Show how many transactions were loaded from the csv
+                System.out.println("Transactions loaded: "+ Ledger.transactions.size());
+                //add headings to make the ledger easier to read for my capstone
+                System.out.printf("%-12s %-8s %-25s %-18s %-10s%n", "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT");
+                System.out.println("-".repeat(80));
+                //Use the saved transactions and display each one
+                for (Transaction transaction : Ledger.transactions){
+                    System.out.printf("%-12s %-8s %-25s %-18s %10.2f%n", transaction.getDate(), transaction.getTime(),
+                            transaction.getDescription(), transaction.getVendor(), transaction.getAmount());
+                    ;
+                }
+
+
             } else if (choice.equalsIgnoreCase("X")) {
                 System.out.println("Thank you for using JG Financial! ");
                 break;
