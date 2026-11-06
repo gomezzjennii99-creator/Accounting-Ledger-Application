@@ -14,7 +14,7 @@ import java.io.BufferedReader;    //BufferedReader - reads the file one line at 
 import java.io.IOException;       //IOException - handles errors if java can't read the file
 
 /*  TransactionFileManger class holds the methods
-for reading and saving transactions to the CSV file  */
+for reading my CSV file and saved new ones */
 
 public class TransactionFileManager {
 

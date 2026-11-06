@@ -5,9 +5,8 @@ they are part of Java's Package */
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-/*Transaction - describes what one transaction looks like
-transactions - hold all the transaction record
-Ledger - helps manage the transactions
+/*Transaction class describes what one transaction looks like.
+It stores the date, time, description, vendor, and amount.
  */
 
 public class Transaction {

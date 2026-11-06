@@ -7,7 +7,8 @@ times = dates or times */
 import java.util.Scanner;
 import java.util.ArrayList;
 
- /* Ledger - All entries should show the newest entries first
+ /* (Instructions)
+ Ledger - All entries should show the newest entries first
         - A) All - Display all entries
         - D) Deposits - Display only the entries that are deposits into the account
         - P) Payments - Display only the negative entries (or payments)
