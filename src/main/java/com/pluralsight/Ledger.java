@@ -31,7 +31,7 @@ IOException - handles errors if java can't read the file
             ▪ 4) Previous Year
             ▪ 5) Search by Vendor - prompt the user for the vendor name and
                 display all entries for that vendor
-            ▪ 0) Back - go back to the Ledger page
+             ▪ 0) Back - go back to the Ledger page
         - H) Home - go back to the home page
      */
 
@@ -133,6 +133,8 @@ public class Ledger {
 
         //Close the writer to make sure the transaction is saved
         writer.close();
+
+
 
     }
 
