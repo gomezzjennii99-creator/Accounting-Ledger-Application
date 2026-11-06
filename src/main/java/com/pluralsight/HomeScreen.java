@@ -72,7 +72,7 @@ public class HomeScreen {
                 LocalDate date = LocalDate.now();
                 LocalTime time = LocalTime.now().withSecond(0).withNano(0);
                 //Create a transaction object for the deposit
-                Transaction deposit = new Transaction(date, time, description,vendor, amount);
+                Transaction deposit = new Transaction(date, time, description, vendor, amount);
                 //add the new deposit to the list of transactions
                 Ledger.transactions.add(deposit);
                 //save the deposit to the CSV file so it is still there when i reopen the program
@@ -80,8 +80,6 @@ public class HomeScreen {
 
                 //Confirm to user Deposit made Successfully
                 System.out.println("Deposit information entered successfully :)!");
-
-
 
 
             } else if (choice.equalsIgnoreCase("P")) {
@@ -96,7 +94,7 @@ public class HomeScreen {
                 String vendor = scanner.nextLine();
                 //ask how much money is being payed
                 System.out.print("Enter payment amount: ");
-                double amount = - Math.abs(Double.parseDouble(scanner.nextLine()));
+                double amount = -Math.abs(Double.parseDouble(scanner.nextLine()));
                 //automatically get the date and time of the payment
                 LocalDate date = LocalDate.now();
                 LocalTime time = LocalTime.now().withSecond(0).withNano(0);
@@ -131,24 +129,11 @@ public class HomeScreen {
                 scanner.nextLine();
 
 
-
-
-
-
-
             } else if (choice.equalsIgnoreCase("L")) {
                 System.out.println("VIEW LEDGER AND REPORTS SELECTED");
-                //Show how many transactions were loaded from the csv
-                System.out.println("Transactions loaded: "+ Ledger.transactions.size());
-                //add headings to make the ledger easier to read for my capstone
-                System.out.printf("%-12s %-8s %-25s %-18s %-10s%n", "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT");
-                System.out.println("-".repeat(80));
-                //Use the saved transactions and display each one
-                for (Transaction transaction : Ledger.transactions){
-                    System.out.printf("%-12s %-8s %-25s %-18s %10.2f%n", transaction.getDate(), transaction.getTime(),
-                            transaction.getDescription(), transaction.getVendor(), transaction.getAmount());
-                    ;
-                }
+                Ledger.showLedgerMenu();
+
+
 
             } else if (choice.equalsIgnoreCase("X")) {
                 System.out.println("Thank you for using JG Financial! ");
