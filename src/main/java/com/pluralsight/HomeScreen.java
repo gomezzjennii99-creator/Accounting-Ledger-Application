@@ -19,7 +19,7 @@ public class HomeScreen {
 
     public static void main(String[] args) throws IOException {
         // Load saved transactions from the CSV before showing the menu
-        Ledger.loadTransactions();
+        TransactionFileManager.loadTransactions();
 
         //Create a scanner that is able to read user input
         Scanner scanner = new Scanner(System.in);
@@ -76,7 +76,7 @@ public class HomeScreen {
                 //add the new deposit to the list of transactions
                 Ledger.transactions.add(deposit);
                 //save the deposit to the CSV file so it is still there when i reopen the program
-                Ledger.saveTransaction(deposit);
+                TransactionFileManager.saveTransaction(deposit);
 
                 //Confirm to user Deposit made Successfully
                 System.out.println("Deposit information entered successfully :)!");
@@ -114,9 +114,9 @@ public class HomeScreen {
                 Ledger.transactions.add(payment);
 
                 //save the payment to the CSV file so it stays there when I reopen the program
-                Ledger.saveTransaction(payment);
+                TransactionFileManager.saveTransaction(payment);
                 /*
-                Ledger            - class where my method is created
+                TransaxtionFileManager            - class where my method is created
                 saveTransaction() - the method created that saves transaction to the CVS file
                 payment           - the object passing into the method
                  */
