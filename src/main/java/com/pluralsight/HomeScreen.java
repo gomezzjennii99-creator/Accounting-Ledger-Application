@@ -85,7 +85,11 @@ public class HomeScreen {
                 TransactionFileManager.saveTransaction(deposit);
 
                 //Confirm to user Deposit made Successfully
-                System.out.println("Deposit information entered successfully :)!");
+                System.out.println("Deposit information entered successfully :)!\n");
+
+                // Wait for the user before returning home
+                System.out.println("Press Enter to return to the Home menu...");
+                scanner.nextLine();
 
 
             } else if (choice.equalsIgnoreCase("P")) {
@@ -122,16 +126,16 @@ public class HomeScreen {
                 //save the payment to the CSV file so it stays there when I reopen the program
                 TransactionFileManager.saveTransaction(payment);
                 /*
-                TransaxtionFileManager            - class where my method is created
+                TransactionFileManager           - class where my method is created
                 saveTransaction() - the method created that saves transaction to the CVS file
                 payment           - the object passing into the method
                  */
 
                 //Let user know their payment was saved successfully!
-                System.out.println("Payment record successfully! :)");
-                //wait for use to press enter before returning home
-                System.out.println("Please Enter to return to Home menu... ");
-                //pauses the program and waits for the user to press Enter
+                System.out.println("Payment record successfully! :)\n");
+
+                // Wait for the user before returning home
+                System.out.println("Press Enter to return to the Home menu...");
                 scanner.nextLine();
 
 
