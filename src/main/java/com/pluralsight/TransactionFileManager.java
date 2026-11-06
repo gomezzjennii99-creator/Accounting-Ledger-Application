@@ -13,15 +13,15 @@ import java.io.BufferedWriter;
 import java.io.BufferedReader;    //BufferedReader - reads the file one line at a time
 import java.io.IOException;       //IOException - handles errors if java can't read the file
 
-/*  TransactionFileManger class holds the methods
-for reading my CSV file and saved new ones */
+/*  TransactionFileManger class is meant to load saved transactions and write it new ones.
+ */
 
 public class TransactionFileManager {
 
     //Create a method to read my CSV file that will load transactions
     public static void loadTransactions() throws IOException {
 
-        //open the CSV file so I can read each transaction
+        // opens the CSV file so I can read each transaction
         /*
         BufferedReader           - type of variable
         reader                   - name of variable
@@ -42,13 +42,11 @@ public class TransactionFileManager {
         .readLine()      - reads one line from file
          */
         String line = reader.readLine();
-
-
         //Skip the header and start reading actual transactions
         //Read all the transactions
         line = reader.readLine();
 
-         /*Used a while loop because it keeps looping as there's a line to read.
+         /*Used a while loop because it keep reading until there's a line no more lines read.
         Avoiding processing a line that doesn't exist */
 
         /*
@@ -65,7 +63,7 @@ public class TransactionFileManager {
             String[] parts = line.split("\\|");
             //move to the next line
             line = reader.readLine();
-
+            //different parts of my array
             LocalDate date = LocalDate.parse(parts[0]);
             LocalTime time = LocalTime.parse(parts[1]);
             String description = parts[2];
@@ -75,7 +73,7 @@ public class TransactionFileManager {
             // new Transaction object - use info from the CSV to create a transaction
             Transaction transaction = new Transaction(date, time, description, vendor, amount);
 
-            //saves transaction in the list - we are going use it later
+            //saves transaction in the list
             Ledger.transactions.add(transaction);
 
         }//closes while loop

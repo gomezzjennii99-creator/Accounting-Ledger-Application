@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class Ledger {
 
-    // ArrayList - list to hold all transactions we read from the file (outside method)
+    // Created an ArrayList - list to hold all transactions we read from the file (outside method)
     static ArrayList<Transaction> transactions = new ArrayList<>();
 
 
@@ -52,10 +52,11 @@ public class Ledger {
 
             String choice = scanner.nextLine().trim().toUpperCase();
 
+            //switch statement tp handle the users choice
             switch (choice) {
                 case "A":
                     //Show all transactions
-                    //Show how many transactions were loaded from the csv
+                    //Show how many transactions were loaded from the csv using size()
                     System.out.println("Transactions loaded: " + Ledger.transactions.size());
 
                     //add headings to make the ledger easier to read for my capstone
@@ -63,6 +64,7 @@ public class Ledger {
                     System.out.println("-".repeat(80));
 
                     //Use the saved transactions and display each one
+                    //for each loop goes through each transaction object
                     for (Transaction transaction : Ledger.transactions) {
                         System.out.printf("%-12s %-8s %-25s %-18s %10.2f%n", transaction.getDate(), transaction.getTime(),
                                 transaction.getDescription(), transaction.getVendor(), transaction.getAmount());
@@ -71,6 +73,7 @@ public class Ledger {
 
                 case "D":
                     //Show deposits (Positive amounts)
+                    //is the get Amount() is greater than zero
                     for (Transaction transaction : Ledger.transactions) {
                         if (transaction.getAmount() > 0) {
                             printTransaction(transaction);
@@ -80,6 +83,7 @@ public class Ledger {
 
                 case "P":
                     //Show payments
+                    //is the get Amount() is less than zero
                     for (Transaction transaction : Ledger.transactions) {
                         if (transaction.getAmount() < 0) {
                             printTransaction(transaction);
@@ -88,7 +92,7 @@ public class Ledger {
                     break;
 
                 case "R":
-                    //Show reports
+                    //Show reports method
                     Reports.showReportsMenu();
                     break;
                 case "H":
@@ -102,6 +106,7 @@ public class Ledger {
 
     }//closes showLedgerMenu()
 
+    //method i can print my transactions and re-use it !
     public static void printTransaction (Transaction transaction){
         System.out.printf("%-12s %-8s %-25s %-18s %10.2f%n", transaction.getDate(), transaction.getTime(),
                 transaction.getDescription(), transaction.getVendor(), transaction.getAmount());

@@ -79,7 +79,7 @@ public class HomeScreen {
                 LocalTime time = LocalTime.now().withSecond(0).withNano(0);
                 //Create a transaction object for the deposit
                 Transaction deposit = new Transaction(date, time, description, vendor, amount);
-                //add the new deposit to the list of transactions
+                //add the new deposit to the list of transactions (array)
                 Ledger.transactions.add(deposit);
                 //save the deposit to the CSV file so it is still there when i reopen the program
                 TransactionFileManager.saveTransaction(deposit);

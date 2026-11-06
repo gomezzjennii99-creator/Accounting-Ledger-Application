@@ -9,7 +9,7 @@ import java.util.Scanner;
  and filers transactions by date or vendor*/
 public class Reports {
 
-    //method that displays the  report menu
+    //method that displays the report menu
     public static void showReportsMenu() {
         //Scanner allows the user to type an option
         Scanner scanner = new Scanner(System.in);
@@ -37,7 +37,7 @@ public class Reports {
             //switch statement checks which report the user want see/use and runs it
             switch (choice) {
                 case "1":
-                    //showDateReport is method name - month to date is the argument
+                    //showDateReport is method name -Report type:  month to date is the argument
                     showDateReport("Month to Date");
 
                     break;
@@ -62,15 +62,17 @@ public class Reports {
     }
 
     // Im using one method to find all four different reports within what date it ranges
-    // also calculating deposits, payments, and total
+    //my method figures out the date range for the report the use selected
     public static void showDateReport(String reportType) {
-    //string reportType - receives the mane of the selected report
+    //reportType - parameter that receives the report name
 
         //gets today's date
         LocalDate today = LocalDate.now();
-        //holds beginning date range
+
+        //creating my start and end dates
+        //where the report begins
         LocalDate startDate;
-        //holds end of date range
+        //where the report ends
         LocalDate endDate;
 
         switch (reportType) {
@@ -123,7 +125,7 @@ public class Reports {
         System.out.println("From " + startDate + " to " + endDate);
 
         // totals help us see how much came in and how much went out
-        //havent added any  payments
+        //haven't added any  payments
         double deposits = 0;
         double payments = 0;
         //not found matches
@@ -170,7 +172,7 @@ public class Reports {
         if (!found) {
             System.out.println("No transactions found for this period.");
         }
-
+        //prints deposits payments
         System.out.printf("Total Deposits: $%.2f%n", deposits);
         System.out.printf("Total Payments: $%.2f%n", payments);
         System.out.printf("Net Total: $%.2f%n", deposits + payments);
@@ -188,12 +190,17 @@ public class Reports {
             System.out.println("Please enter a vendor name.");
             return;
         }
+
+
         // Keep track of whether we find a matching transaction
+        //false - program didn't find any matching
+        //true // program found a vendor matc
         boolean found = false;
 
         System.out.println("\n========== VENDOR SEARCH ==========");
 
-        // Go through every transaction in my ledger one at a time
+        // Goes through every transaction object in my ArrayList, one at a time
+        //"for every transaction in my ledger"
         for (Transaction transaction : Ledger.transactions) {
 
             // Get the transaction's vendor and compare it to what the user typed
